@@ -74,3 +74,13 @@ curl -i -X DELETE http://localhost:5000/api/users/YOUR-USER-ID
 
 - No database persistence or user authentication; add them before production use.
 - This sample has not been compiled or smoke-tested in the authoring environment. Run `dotnet build` and the curl examples before submitting.
+
+## Automated smoke tests
+
+With the API running on `http://localhost:5000` in one terminal, open another terminal at the project root and run:
+
+```bash
+python scripts/smoke_test.py
+```
+
+This checks health, list, create, read, duplicate-email rejection, invalid-email rejection, missing-name rejection, update, delete, and not-found-after-delete. Uses Python's standard library only. These tests must be run on a machine with .NET 8 SDK; they were not executed in the authoring environment because the SDK was unavailable.
